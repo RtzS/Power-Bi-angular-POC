@@ -1,0 +1,34 @@
+<div class="header">
+  <div class="title">Angular Power Bi POC</div>
+</div>
+
+<div class="controls" *ngIf="isEmbedded; else embedReportFlow"></div>
+<div class="controls">
+  <div class="airline-field">
+    <label #airlineLabel>
+      Sample Airline code:
+      <input type="text" name="airlineField" #airlineField />
+    </label>
+  </div>
+  <div class="embed-report">
+    <button
+      class="btn-clr"
+      (click)="embedReport()"
+      id="embed-action"
+      #embedReportBtn
+    >
+      Embed Report
+    </button>
+  </div>
+  <p></p>
+</div>
+
+<ng-template #embedReportFlow> </ng-template>
+
+<powerbi-report
+  [embedConfig]="reportConfig"
+  [cssClassName]="reportClass"
+  [phasedEmbedding]="phasedEmbeddingFlag"
+  [eventHandlers]="eventHandlersMap"
+>
+</powerbi-report>
